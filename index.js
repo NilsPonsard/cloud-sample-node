@@ -4,9 +4,14 @@ const hostname = '0.0.0.0';
 const port = 8080;
 
 let temperature = 28;
+try {
 
-if (process.env.TEMPERATURE) {
-    temperature = process.env.TEMPERATURE;
+    temperature = parseInt(process.env.TEMPERATURE);
+    if (isNaN(temperature)) {
+        temperature = 28;
+    }
+} catch (e) {
+    temperature = 28;
 }
 
 
